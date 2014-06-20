@@ -1,0 +1,69 @@
+'scopeName': 'source.avs'
+'fileTypes': [
+  'avs'
+  'avsi'
+]
+'name': 'AviSynth'
+'foldingStartMarker': '{|\\/\\*'
+'foldingEndMarker': '}|\\*\\/'
+'patterns': [
+  {
+    'begin': '/\\*'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.avs'
+    'end': '\\*/'
+    'name': 'comment.block.avs'
+  }
+  {
+    'begin': '#'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.avs'
+    'end': '\n'
+    'name': 'comment.line.number-sign.avs'
+  }
+  {
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.avs'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.avs'
+    'name': 'string.quoted.double.avs'
+  }
+  {
+    'name': 'storage.type.avs'
+    'match': '\\b(?i:clip|int|float|string|bool|val)\\b'
+  }
+  {
+    'name': 'constant.language.avs'
+    'match': '\\b(?i:true|false|yes|no)\\b'
+  }
+  {
+    'name': 'constant.numeric.avs'
+    'match': '\\b([0-9])\\b'
+  }
+  {
+    'name': 'keyword.operator.comparison.avs'
+    'match': '(!=|==|<|>|<=|>=)'
+  }
+  {
+    'name': 'keyword.operator.assignment.avs'
+    'match': '(=)'
+  }
+  {
+    'name': 'keyword.operator.arithmetic.avs'
+    'match': '(\\-|\\+|\\*|\\/|%)'
+  }
+  {
+    'name': 'keyword.control.ternary.avs'
+    'match': '\\?|:'
+  }
+  {
+    'name': 'keyword.operator.logical.avs'
+    'match': '(!|&&|\\|\\|)'
+  }
+]
