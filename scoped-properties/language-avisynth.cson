@@ -1,0 +1,5 @@
+".source.avs":
+  "editor":
+    "commentStart": "# "
+    "increaseIndentPattern": "{"
+    "decreaseIndentPattern": "}"

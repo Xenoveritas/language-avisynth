@@ -24,6 +24,17 @@
     'name': 'comment.line.number-sign.avs'
   }
   {
+    'begin': '"""'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.avs'
+    'end': '"""'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.avs'
+    'name': 'string.quoted.triple.avs'
+  }
+  {
     'begin': '"'
     'beginCaptures':
       '0':
@@ -35,8 +46,34 @@
     'name': 'string.quoted.double.avs'
   }
   {
-    'name': 'storage.type.avs'
-    'match': '\\b(?i:clip|int|float|string|bool|val)\\b'
+    'name': 'support.function.control.avs'
+    'match': '\\b(?i:Apply|Eval|Import|Select|Default|Assert|NOP|Set(?i:MemoryMax|WorkingDir|PlanarLegacyAlignment))\\b'
+  }
+  {
+    'name': 'support.variable.control.avs'
+    'match': '\\b(?i:OPT_(?i:AllowFloatAudio|UseWaveExtensible))\\b'
+  }
+  {
+    'name': 'support.function.plugin.avs'
+    'match': '\\b(?i:Load(?:VirtualDub|VFAPI|C|_Stdcall_)?Plugin)\\b'
+  }
+  {
+    # What are valid name characters?
+    "begin": "\\b(function)\\s+([^\\s\\\\\\(]+)(?:\\s*(\\(\\)))?",
+    "beginCaptures":
+      "1":
+        "name": "storage.type.function.avs"
+      "2":
+        "name": "entity.name.function.avs"
+      "3":
+        "name": "punctuation.definition.arguments.avs"
+    "end": "{"
+    "endCaptures":
+      "0":
+        "name": "punctuation.definition.function.avs"
+    "patterns": [
+      "include": "#types"
+    ]
   }
   {
     'name': 'constant.language.avs'
@@ -44,7 +81,7 @@
   }
   {
     'name': 'constant.numeric.avs'
-    'match': '\\b([0-9])\\b'
+    'match': '\\b(\\$[0-9A-Fa-f]|[0-9]+)\\b'
   }
   {
     'name': 'keyword.operator.comparison.avs'
@@ -66,4 +103,25 @@
     'name': 'keyword.operator.logical.avs'
     'match': '(!|&&|\\|\\|)'
   }
+  {
+    # A weird AviSynth construct which means "stop processing everything past here"
+    'name': 'comment.line.end.avs'
+    'begin': '__END__'
+    'end': '[^\\s\\S]'
+  }
+  'include': '#nested_comments'
 ]
+'repository':
+  'nested_comments':
+    'begin': '\\[\\*'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.avs'
+    'end': '\\*\\]'
+    'name': 'comment.block.avs'
+    'patterns': [
+      'include': '#nested_comments'
+    ]
+  'types':
+    'name': 'storage.type.avs'
+    'match': '\\b(?i:clip|int|float|string|bool|val)\\b'
