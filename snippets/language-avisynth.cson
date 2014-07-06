@@ -1,0 +1,20 @@
+".source.avs":
+  "AVISource":
+    prefix: "avi"
+    body: 'AVISource("$1")'
+  "Import":
+    prefix: "im"
+    body: 'Import("$1")'
+  "Trim":
+    prefix: "t"
+    body: "Trim($1, $2)"
+  "Crop":
+    prefix: "c"
+    body: "Crop($1, $2, $3, $4)"
+  "Function":
+    prefix: "f"
+    body: """
+      function $1 ($2) {
+        $3
+      }
+      """

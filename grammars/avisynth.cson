@@ -20,8 +20,15 @@
     'captures':
       '0':
         'name': 'punctuation.definition.comment.avs'
-    'end': '\n'
+    'end': '\\n'
     'name': 'comment.line.number-sign.avs'
+    'patterns': [
+      {
+        # Highlight a common mistake
+        'name': 'invalid.illegal.avs'
+        'match': '\\\\[ \\t]*$'
+      }
+    ]
   }
   {
     'begin': '"""'
@@ -74,6 +81,14 @@
   {
     'name': 'keyword.operator.comparison.avs'
     'match': '(!=|==|<|>|<=|>=)'
+  }
+  {
+    'name': 'keyword.control.continuation.avs'
+    'match': '(\\\\)\\s*$'
+  }
+  {
+    'name': 'keyword.control.continuation.avs'
+    'match': '^\\s*(\\\\)'
   }
   {
     'name': 'keyword.operator.assignment.avs'
