@@ -107,10 +107,41 @@
     'match': '(!|&&|\\|\\|)'
   }
   {
+    'name': 'meta.delimiter.method.period.avs'
+    'match': '\\b\\.\\b'
+  }
+  {
     # A weird AviSynth construct which means "stop processing everything past here"
     'name': 'comment.line.end.avs'
     'begin': '__END__'
     'end': '[^\\s\\S]'
+  }
+  {
+    # Special rule to capture patterns in ImageSource
+    'begin': '\\b(?i:(ImageSource))\\s*(\\()\\s*(")'
+    'beginCaptures':
+      '0':
+        'name': 'source.avs'
+      '1':
+        'name': 'support.function.filter.avs'
+      '2':
+        'name': 'punctuation.definition.arguments.avs'
+      '3':
+        'name': 'punctuation.definition.string.begin.avs'
+    'name': 'string.quoted.double.avs'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.avs'
+    'patterns': [
+      {
+        'include': '#interpolated_imagesource'
+      }
+    ]
+  }
+  {
+    'name': 'variable.language.avs'
+    'match': '\\b(?i:last)\\b'
   }
   {
     'name': 'support.function.boolean.avs'
@@ -168,6 +199,24 @@
     'name': 'comment.block.avs'
     'patterns': [
       'include': '#nested_comments'
+    ]
+  'interpolated_imagesource':
+    'name': 'string.quoted.double.avs'
+    'patterns': [
+      {
+        'match': '%%'
+        'name': 'constant.other.placeholder.avs'
+      }
+      {
+        # FIXME: I have no idea which numeric matches are actually allowed
+        'match': '%[0 #+-]*(?:\\d*+|\\*)?(?:\\.(?:\\d+|\\*))?(?:hh?|ll?|j|z|t|L)?[diuoxXfFeEgGaA]'
+        'name': 'constant.other.placeholder.avs'
+      }
+      {
+        # FIXME: This should ALSO catch valid numeric items after the first match
+        'match': '%[0 #+-]*(?:\\d*+|\\*)?(?:\\.(?:\\d+|\\*))?(?:hh?|ll?|j|z|t|L)?[^diuoxXfFeEgGaA]'
+        'name': 'invalid.illegal.avs'
+      }
     ]
   'types':
     'name': 'storage.type.avs'

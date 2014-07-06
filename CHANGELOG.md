@@ -1,4 +1,4 @@
-## 0.1.1
+## 0.2.0
 * Add snippets
 * Mark off probably accidentally commented out continuations
 
