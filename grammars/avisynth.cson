@@ -79,6 +79,10 @@
     'match': '\\b(\\$[0-9A-Fa-f]|[0-9]+)\\b'
   }
   {
+    'name': 'keyword.control.avs'
+    'match': '\\breturn\\b'
+  }
+  {
     'name': 'keyword.operator.comparison.avs'
     'match': '(!=|==|<|>|<=|>=)'
   }
