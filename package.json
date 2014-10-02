@@ -1,6 +1,6 @@
 {
   "name": "language-avisynth",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "AviSynth language support",
   "repository": "https://github.com/Xenoveritas/language-avisynth",
   "license": "MIT",
