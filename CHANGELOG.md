@@ -1,3 +1,9 @@
+## 0.2.2
+* Make return case-insensitive because AviSynth is still case-insensitive
+
+## 0.2.1
+* Highlight "return" keyword
+
 ## 0.2.0
 * Add snippets
 * Mark off probably accidentally commented out continuations

@@ -80,7 +80,7 @@
   }
   {
     'name': 'keyword.control.avs'
-    'match': '\\breturn\\b'
+    'match': '\\b(?i:return)\\b'
   }
   {
     'name': 'keyword.operator.comparison.avs'
