@@ -10,16 +10,14 @@
   {
     'begin': '/\\*'
     'captures':
-      '0':
-        'name': 'punctuation.definition.comment.avs'
+      '0': 'name': 'punctuation.definition.comment.avs'
     'end': '\\*/'
     'name': 'comment.block.avs'
   }
   {
     'begin': '#'
     'captures':
-      '0':
-        'name': 'punctuation.definition.comment.avs'
+      '0': 'name': 'punctuation.definition.comment.avs'
     'end': '\\n'
     'name': 'comment.line.number-sign.avs'
     'patterns': [
@@ -54,7 +52,7 @@
   }
   {
     # What are valid name characters?
-    "begin": "\\b(function)\\s+([^\\s\\\\\\(]+)(?:\\s*(\\(\\)))?",
+    "begin": "\\b(?i:(function))\\s+([^\\s\\\\\\(]+)(?:\\s*(\\(\\)))?",
     "beginCaptures":
       "1":
         "name": "storage.type.function.avs"
@@ -67,7 +65,7 @@
       "0":
         "name": "punctuation.definition.function.avs"
     "patterns": [
-      "include": "#types"
+      "include": "#functionTypes"
     ]
   }
   {
@@ -76,11 +74,17 @@
   }
   {
     'name': 'constant.numeric.avs'
-    'match': '\\b(\\$[0-9A-Fa-f]|[0-9]+)\\b'
+    'match': '\\b[0-9]+(?:\\.[0-9]*)?\\b'
+  }
+  {
+    # FIXME: I want to make this split sanely as right now something like
+    # foo$AA00 will highlight even though it's actually wrong
+    'name': 'constant.numeric.avs'
+    'match': '\\$[0-9A-Fa-f]+\\b'
   }
   {
     'name': 'keyword.control.avs'
-    'match': '\\b(?i:return)\\b'
+    'match': '\\b(?i:return|global|try|catch)\\b'
   }
   {
     'name': 'keyword.operator.comparison.avs'
@@ -143,6 +147,20 @@
       }
     ]
   }
+  # This doesn't work and may not be worth implementing at all.
+  # {
+  #   # A special rule for eval blocks
+  #   "begin": "\\b(?i:eval)\\s+\\((\"\"\")",
+  #   "beginCaptures":
+  #     "1": "name": "support.function.control.avs"
+  #     "2": "name": "string.quoted.triple.avs"
+  #   "end": "(\"\"\")"
+  #   "endCaptures":
+  #     "1": "name": "string.quoted.triple.avs"
+  #   "patterns": [
+  #     "include": "#"
+  #   ]
+  # }
   {
     'name': 'variable.language.avs'
     'match': '\\b(?i:last)\\b'
@@ -222,6 +240,8 @@
         'name': 'invalid.illegal.avs'
       }
     ]
-  'types':
-    'name': 'storage.type.avs'
-    'match': '\\b(?i:clip|int|float|string|bool|val)\\b'
+  'functionTypes':
+    'match': '\\b((?i:clip|int|float|string|bool|val))\\s+([\\w_]+|"[\\w_]+")'
+    'captures':
+      '1': 'name': 'storage.type.avs'
+      '2': 'name': 'variable.parameter.function.avs'

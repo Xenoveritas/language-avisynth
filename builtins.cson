@@ -1,4 +1,11 @@
 # This is a list of the massive collection of AviSynth builtins.
+"keyword":
+  "control": [
+    "return"
+    "global"
+    "try"
+    "catch"
+  ]
 "support":
   "function":
     "numeric": [
@@ -51,7 +58,7 @@
     ]
     "control": [
       "Apply"
-      "Eval"
+      # "Eval" Eval is now "special"
       "Import"
       "Select"
       "Default"
