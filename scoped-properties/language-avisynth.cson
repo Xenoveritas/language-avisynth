@@ -3,3 +3,7 @@
     "commentStart": "# "
     "increaseIndentPattern": "{"
     "decreaseIndentPattern": "}"
+# If there were a property to force Windows style line endings, we should be
+# setting it here.
+# And who knows, maybe there even is, since none of the contents of this file
+# seem to be documented anywhere.

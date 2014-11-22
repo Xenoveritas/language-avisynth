@@ -1,5 +1,13 @@
 # This file is a simple test file of various language features.
 
+/*
+ * Comment folding test.
+ */
+
+[*
+ Comment folding test.
+*]
+
 [* Like nested
  [* Comments
   [* That can be nested multiple times *]
@@ -42,6 +50,12 @@ global whatever = 1
 """)
 
 BlankClip().Subtitle("Hello!")
+
+# Check things with single suffixes
+AudioDub()
+AudioDubEx()
+AudioLength()
+AudioLengthF()
 
 __END__
 

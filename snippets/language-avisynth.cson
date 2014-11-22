@@ -5,6 +5,9 @@
   "Import":
     prefix: "im"
     body: 'Import("$1")'
+  "LoadPlugin":
+    prefix: "lo"
+    body: 'LoadPlugin("$1")'
   "Trim":
     prefix: "t"
     body: "Trim($1, $2)"
