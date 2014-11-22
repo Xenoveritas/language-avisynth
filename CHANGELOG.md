@@ -1,3 +1,9 @@
+## 0.4.1
+* Remember that the changelog exists.
+
+## 0.4.0
+* Fix built-in generation so that things that have a single suffix don't get masked by the suffix. (e.g, `AudioDub` versus `AudioDubEx`)
+
 ## 0.3.0
 * Add global, try, and catch.
 * Highlight function parameter types and names in function definition bodies.
