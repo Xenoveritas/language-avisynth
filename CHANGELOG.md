@@ -1,3 +1,6 @@
+## 0.5.0
+* Eval blocks and variable assignments are now highlighted.
+
 ## 0.4.1
 * Remember that the changelog exists.
 

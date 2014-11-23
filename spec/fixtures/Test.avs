@@ -25,6 +25,9 @@ function foo(clip c, string s, int i, float f, bool b, val v) {
 FuNcTiOn foo(clip "c", string "s", int "i", float "f", bool "b", val "v") {
     return BlankClip()
 }
+fUnCtIoN   baz   (   clip   a  ,  string   "s"    ){
+    # Just a bunch of extra whitespace
+}
 
 try {
     SomethingHorrible()
@@ -43,13 +46,23 @@ can span
 multiple lines."""
 other="$aaBBcc"
 
+# ImageSource pattern highlighting
+ImageSource("test%04d.png")
+# Check with whitespace and an illegal pattern
+ImageSource ( "test%.png" )
+
 Eval("""
 # A bunch of code.
 # Conceptually this could be highlighted.
 global whatever = 1
 """)
 
+Eval("# Eval should be highlighted here, too")
+
 BlankClip().Subtitle("Hello!")
+BlankClip ( ) . Subtitle ( "Hello", color="", font="Helvetica"  ,   font_size  = 12.5 )
+BlankClip(length=4)
+BlankClip(length=(5*20), color=$00FF00, something_else=NOP())
 
 # Check things with single suffixes
 AudioDub()

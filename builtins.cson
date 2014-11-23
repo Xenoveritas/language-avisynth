@@ -58,7 +58,7 @@
     ]
     "control": [
       "Apply"
-      # "Eval" Eval is now "special"
+      "Eval"
       "Import"
       "Select"
       "Default"

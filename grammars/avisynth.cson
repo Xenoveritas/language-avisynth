@@ -8,64 +8,41 @@
 'foldingEndMarker': '}|\\*\\/'
 'patterns': [
   {
-    'begin': '/\\*'
-    'captures':
-      '0': 'name': 'punctuation.definition.comment.avs'
-    'end': '\\*/'
-    'name': 'comment.block.avs'
+    'include': '#comments'
   }
   {
-    'begin': '#'
-    'captures':
-      '0': 'name': 'punctuation.definition.comment.avs'
-    'end': '\\n'
-    'name': 'comment.line.number-sign.avs'
-    'patterns': [
-      {
-        # Highlight a common mistake
-        'name': 'invalid.illegal.avs'
-        'match': '\\\\[ \\t]*$'
-      }
-    ]
+    'include': '#nested_comments'
   }
   {
     'begin': '"""'
     'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.avs'
+      '0': 'name': 'punctuation.definition.string.begin.avs'
     'end': '"""'
     'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.avs'
+      '0': 'name': 'punctuation.definition.string.end.avs'
     'name': 'string.quoted.triple.avs'
   }
   {
     'begin': '"'
     'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.avs'
+      '0': 'name': 'punctuation.definition.string.begin.avs'
     'end': '"'
     'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.avs'
+      '0': 'name': 'punctuation.definition.string.end.avs'
     'name': 'string.quoted.double.avs'
   }
   {
-    # What are valid name characters?
-    "begin": "\\b(?i:(function))\\s+([^\\s\\\\\\(]+)(?:\\s*(\\(\\)))?",
-    "beginCaptures":
-      "1":
-        "name": "storage.type.function.avs"
-      "2":
-        "name": "entity.name.function.avs"
-      "3":
-        "name": "punctuation.definition.arguments.avs"
-    "end": "{"
-    "endCaptures":
-      "0":
-        "name": "punctuation.definition.function.avs"
-    "patterns": [
-      "include": "#functionTypes"
+    # function definition
+    'begin': '\\b(?i:(function))\\s+([A-Za-z0-9_]+)(?:\\s*(\\(\\)))?',
+    'beginCaptures':
+      '1': 'name': 'storage.type.function.avs'
+      '2': 'name': 'entity.name.function.avs'
+      '3': 'name': 'punctuation.definition.arguments.avs'
+    'end': '{'
+    'endCaptures':
+      '0': 'name': 'punctuation.definition.function.avs'
+    'patterns': [
+      'include': '#functionTypes'
     ]
   }
   {
@@ -99,10 +76,6 @@
     'match': '^\\s*(\\\\)'
   }
   {
-    'name': 'keyword.operator.assignment.avs'
-    'match': '(=)'
-  }
-  {
     'name': 'keyword.operator.arithmetic.avs'
     'match': '(\\-|\\+|\\*|\\/|%)'
   }
@@ -128,14 +101,10 @@
     # Special rule to capture patterns in ImageSource
     'begin': '\\b(?i:(ImageSource))\\s*(\\()\\s*(")'
     'beginCaptures':
-      '0':
-        'name': 'source.avs'
-      '1':
-        'name': 'support.function.filter.avs'
-      '2':
-        'name': 'punctuation.definition.arguments.avs'
-      '3':
-        'name': 'punctuation.definition.string.begin.avs'
+      '0': 'name': 'source.avs'
+      '1': 'name': 'support.function.filter.avs'
+      '2': 'name': 'punctuation.definition.arguments.avs'
+      '3': 'name': 'punctuation.definition.string.begin.avs'
     'name': 'string.quoted.double.avs'
     'end': '"'
     'endCaptures':
@@ -147,71 +116,58 @@
       }
     ]
   }
-  # This doesn't work and may not be worth implementing at all.
-  # {
-  #   # A special rule for eval blocks
-  #   "begin": "\\b(?i:eval)\\s+\\((\"\"\")",
-  #   "beginCaptures":
-  #     "1": "name": "support.function.control.avs"
-  #     "2": "name": "string.quoted.triple.avs"
-  #   "end": "(\"\"\")"
-  #   "endCaptures":
-  #     "1": "name": "string.quoted.triple.avs"
-  #   "patterns": [
-  #     "include": "#"
-  #   ]
-  # }
+  {
+    # A special rule for eval blocks
+    'begin': '\\b(?i:(eval))\\s*\\((""")',
+    'beginCaptures':
+      '1': 'name': 'support.function.control.avs'
+      '2': 'name': 'string.quoted.triple.avs'
+    'end': '(""")'
+    'endCaptures':
+      '1': "name": 'string.quoted.triple.avs'
+    'patterns': [
+      'include': 'source.avs'
+    ]
+  }
   {
     'name': 'variable.language.avs'
     'match': '\\b(?i:last)\\b'
   }
   {
-    'name': 'support.function.boolean.avs'
-    'match': '\\b(?i:defined|exist|is(?:bool|clip|float|int|string))\\b'
+    'match': '([A-Za-z0-9_]+)\\s*(=)'
+    'captures':
+      '1': 'name': 'variable.assignment.avs'
+      '2': 'name': 'keyword.operator.assignment.avs'
   }
   {
-    'name': 'support.function.clip.avs'
-    'match': '\\b(?i:audio(?:bits|channels|length(?:f)?|rate)|frame(?:count|rate(?:denominator|numerator)?)|getparity|h(?:as(?:audio|video)|eight)|is(?:audio(?:float|int)|f(?:ieldbased|ramebased)|interleaved|planar|rgb(?:24|32)?|y(?:u(?:v|y2)|v12))|width)\\b'
+    'include': '#builtins'
   }
-  {
-    'name': 'support.function.control.avs'
-    'match': '\\b(?i:a(?:pply|ssert)|default|import|nop|se(?:lect|t(?:memorymax|planarlegacyalignment|workingdir)))\\b'
-  }
-  {
-    'name': 'support.function.conversion.avs'
-    'match': '\\b(?i:hexvalue|string|value)\\b'
-  }
-  {
-    'name': 'support.function.filter.avs'
-    'match': '\\b(?i:a(?:ddborders|lignedsplice|mplify(?:db)?|nimate|pplyrange|ssume(?:bff|f(?:ieldbased|ps|ramebased)|s(?:amplerate|caledfps)|tff)|udiodub(?:ex)?|vi(?:filesource|source))|b(?:i(?:cubicresize|linearresize)|l(?:a(?:ck(?:manresize|ness)|nkclip)|ur)|ob)|c(?:hangefps|o(?:lor(?:bars|keymask|yuv)|mp(?:are|lementparity)|n(?:ditional(?:filter|reader)|vert(?:audioto(?:16bit|24bit|32bit|8bit|float)|backtoyuy2|fps|to(?:mono|rgb(?:24|32)?|y(?:uy2|v12)))))|rop(?:bottom)?)|d(?:el(?:ayaudio|eteframe)|i(?:rectshowsource|ssolve)|oubleweave|uplicateframe)|ensurevbrmp3sync|f(?:ade(?:i(?:n(?:0|2)?|o(?:0|2)?)|out(?:0|2)?)|ix(?:brokenchromaupsampling|luminance)|lip(?:horizontal|vertical)|r(?:ameevaluate|eezeframe))|g(?:aussresize|e(?:neralconvolution|tchannel)|reyscale)|h(?:istogram|orizontalreduceby2)|i(?:m(?:age(?:reader|source|writer)|port)|n(?:fo|terleave|vert))|kill(?:audio|video)|l(?:a(?:nczos(?:4resize|resize)|yer)|e(?:tterbox|vels)|imiter|oop)|m(?:ask|e(?:rge(?:argb|ch(?:annels|roma)|luma|rgb)?|ssageclip)|ixaudio)|normalize|o(?:pendmlsource|verlay)|p(?:eculiarblend|ointresize|ulldown)|r(?:e(?:duceby2|s(?:ampleaudio|etmask)|verse)|gbadjust)|s(?:criptclip|e(?:gmented(?:avisource|directshowsource)|lect(?:eve(?:n|ry)|odd|rangeevery)|paratefields)|h(?:arpen|ow(?:alpha|blue|f(?:iveversions|ramenumber)|green|red|smpte|time))|p(?:atialsoften|line(?:16resize|36resize|64resize))|src|tack(?:horizontal|vertical)|u(?:bt(?:itle|ract)|pereq)|wap(?:fields|uv))|t(?:cpdeliver|emporalsoften|imestretch|one|rim|urn(?:180|left|right)|weak)|u(?:nalignedsplice|toy)|v(?:er(?:sion|ticalreduceby2)|toy)|w(?:avsource|eave|ritefile(?:end|if|start)?)|ytouv)\\b'
-  }
-  {
-    'name': 'support.function.numeric.avs'
-    'match': '\\b(?i:abs|c(?:eil|os)|exp|f(?:lo(?:at|or)|rac)|int|log|m(?:ax|in|uldiv)|p(?:i|ow)|r(?:and|ound)|s(?:i(?:gn|n)|pline|qrt))\\b'
-  }
-  {
-    'name': 'support.function.plugin.avs'
-    'match': '\\b(?i:load(?:_stdcall_plugin|cplugin|plugin|v(?:fapiplugin|irtualdubplugin)))\\b'
-  }
-  {
-    'name': 'support.function.runtime.avs'
-    'match': '\\b(?i:average(?:chroma(?:u|v)|luma)|chroma(?:udifference|vdifference)|lumadifference|rgbdifference(?:fromprevious|tonext)?|u(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?))|v(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?))|y(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?)))\\b'
-  }
-  {
-    'name': 'support.function.string.avs'
-    'match': '\\b(?i:chr|findstr|l(?:case|eftstr)|midstr|r(?:evstr|ightstr)|strlen|time|ucase)\\b'
-  }
-  {
-    'name': 'support.function.version.avs'
-    'match': '\\b(?i:version(?:number|string))\\b'
-  }
-  {
-    'name': 'support.variable.control.avs'
-    'match': '\\b(?i:opt_(?:allowfloataudio|usewaveextensible))\\b'
-  }
-  'include': '#nested_comments'
 ]
 'repository':
+  'comments':
+    'patterns': [
+      {
+        'begin': '/\\*'
+        'captures':
+          '0': 'name': 'punctuation.definition.comment.avs'
+        'end': '\\*/'
+        'name': 'comment.block.avs'
+      }
+      {
+        'begin': '#'
+        'captures':
+          '0': 'name': 'punctuation.definition.comment.avs'
+        'end': '\\n'
+        'name': 'comment.line.number-sign.avs'
+        'patterns': [
+          {
+            # Highlight a common mistake
+            'name': 'invalid.illegal.avs'
+            'match': '\\\\[ \\t]*$'
+          }
+        ]
+      }
+    ]
   'nested_comments':
     'begin': '\\[\\*'
     'captures':
@@ -221,6 +177,53 @@
     'name': 'comment.block.avs'
     'patterns': [
       'include': '#nested_comments'
+    ]
+  'builtins':
+    'patterns': [
+      {
+        'name': 'support.function.boolean.avs'
+        'match': '\\b(?i:defined|exist|is(?:bool|clip|float|int|string))\\b'
+      }
+      {
+        'name': 'support.function.clip.avs'
+        'match': '\\b(?i:audio(?:bits|channels|length(?:f)?|rate)|frame(?:count|rate(?:denominator|numerator)?)|getparity|h(?:as(?:audio|video)|eight)|is(?:audio(?:float|int)|f(?:ieldbased|ramebased)|interleaved|planar|rgb(?:24|32)?|y(?:u(?:v|y2)|v12))|width)\\b'
+      }
+      {
+        'name': 'support.function.control.avs'
+        'match': '\\b(?i:a(?:pply|ssert)|default|eval|import|nop|se(?:lect|t(?:memorymax|planarlegacyalignment|workingdir)))\\b'
+      }
+      {
+        'name': 'support.function.conversion.avs'
+        'match': '\\b(?i:hexvalue|string|value)\\b'
+      }
+      {
+        'name': 'support.function.filter.avs'
+        'match': '\\b(?i:a(?:ddborders|lignedsplice|mplify(?:db)?|nimate|pplyrange|ssume(?:bff|f(?:ieldbased|ps|ramebased)|s(?:amplerate|caledfps)|tff)|udiodub(?:ex)?|vi(?:filesource|source))|b(?:i(?:cubicresize|linearresize)|l(?:a(?:ck(?:manresize|ness)|nkclip)|ur)|ob)|c(?:hangefps|o(?:lor(?:bars|keymask|yuv)|mp(?:are|lementparity)|n(?:ditional(?:filter|reader)|vert(?:audioto(?:16bit|24bit|32bit|8bit|float)|backtoyuy2|fps|to(?:mono|rgb(?:24|32)?|y(?:uy2|v12)))))|rop(?:bottom)?)|d(?:el(?:ayaudio|eteframe)|i(?:rectshowsource|ssolve)|oubleweave|uplicateframe)|ensurevbrmp3sync|f(?:ade(?:i(?:n(?:0|2)?|o(?:0|2)?)|out(?:0|2)?)|ix(?:brokenchromaupsampling|luminance)|lip(?:horizontal|vertical)|r(?:ameevaluate|eezeframe))|g(?:aussresize|e(?:neralconvolution|tchannel)|reyscale)|h(?:istogram|orizontalreduceby2)|i(?:m(?:age(?:reader|source|writer)|port)|n(?:fo|terleave|vert))|kill(?:audio|video)|l(?:a(?:nczos(?:4resize|resize)|yer)|e(?:tterbox|vels)|imiter|oop)|m(?:ask|e(?:rge(?:argb|ch(?:annels|roma)|luma|rgb)?|ssageclip)|ixaudio)|normalize|o(?:pendmlsource|verlay)|p(?:eculiarblend|ointresize|ulldown)|r(?:e(?:duceby2|s(?:ampleaudio|etmask)|verse)|gbadjust)|s(?:criptclip|e(?:gmented(?:avisource|directshowsource)|lect(?:eve(?:n|ry)|odd|rangeevery)|paratefields)|h(?:arpen|ow(?:alpha|blue|f(?:iveversions|ramenumber)|green|red|smpte|time))|p(?:atialsoften|line(?:16resize|36resize|64resize))|src|tack(?:horizontal|vertical)|u(?:bt(?:itle|ract)|pereq)|wap(?:fields|uv))|t(?:cpdeliver|emporalsoften|imestretch|one|rim|urn(?:180|left|right)|weak)|u(?:nalignedsplice|toy)|v(?:er(?:sion|ticalreduceby2)|toy)|w(?:avsource|eave|ritefile(?:end|if|start)?)|ytouv)\\b'
+      }
+      {
+        'name': 'support.function.numeric.avs'
+        'match': '\\b(?i:abs|c(?:eil|os)|exp|f(?:lo(?:at|or)|rac)|int|log|m(?:ax|in|uldiv)|p(?:i|ow)|r(?:and|ound)|s(?:i(?:gn|n)|pline|qrt))\\b'
+      }
+      {
+        'name': 'support.function.plugin.avs'
+        'match': '\\b(?i:load(?:_stdcall_plugin|cplugin|plugin|v(?:fapiplugin|irtualdubplugin)))\\b'
+      }
+      {
+        'name': 'support.function.runtime.avs'
+        'match': '\\b(?i:average(?:chroma(?:u|v)|luma)|chroma(?:udifference|vdifference)|lumadifference|rgbdifference(?:fromprevious|tonext)?|u(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?))|v(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?))|y(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?)))\\b'
+      }
+      {
+        'name': 'support.function.string.avs'
+        'match': '\\b(?i:chr|findstr|l(?:case|eftstr)|midstr|r(?:evstr|ightstr)|strlen|time|ucase)\\b'
+      }
+      {
+        'name': 'support.function.version.avs'
+        'match': '\\b(?i:version(?:number|string))\\b'
+      }
+      {
+        'name': 'support.variable.control.avs'
+        'match': '\\b(?i:opt_(?:allowfloataudio|usewaveextensible))\\b'
+      }
     ]
   'interpolated_imagesource':
     'name': 'string.quoted.double.avs'
