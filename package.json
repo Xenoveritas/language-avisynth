@@ -4,8 +4,14 @@
   "description": "AviSynth language support",
   "repository": "https://github.com/Xenoveritas/language-avisynth",
   "license": "MIT",
+  "scripts": {
+    "compile-builtins": "node lib/compile-builtins.js"
+  },
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "season": "~2.0"
+  }
 }

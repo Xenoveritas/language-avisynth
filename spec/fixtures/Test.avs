@@ -50,12 +50,18 @@ other="$aaBBcc"
 ImageSource("test%04d.png")
 # Check with whitespace and an illegal pattern
 ImageSource ( "test%.png" )
+a=ImageSource("foo%d.png", start=1, end=20, pixel_type="RGB32")
+NotImageSource("No highlighting %d here.")
 
 Eval("""
 # A bunch of code.
 # Conceptually this could be highlighted.
 global whatever = 1
 """)
+
+Eval ( """
+# This should be highlighted too.
+    """ )
 
 Eval("# Eval should be highlighted here, too")
 

@@ -1,3 +1,8 @@
+## 0.5.1
+* Move the settings to its new home.
+* Fix `eval`s with whitespace in them not being highlighted (like `eval ( """`...`""" )`)
+* `ImageSource` no longer highlights itself as a string, just the first argument
+
 ## 0.5.0
 * Eval blocks and variable assignments are now highlighted.
 
