@@ -1,3 +1,6 @@
+## 0.5.2
+* Remove duplicates from the list of built-ins. This should have no real effect, although `Import` was technically matched twice.
+
 ## 0.5.1
 * Move the settings to its new home.
 * Fix `eval`s with whitespace in them not being highlighted (like `eval ( """`...`""" )`)

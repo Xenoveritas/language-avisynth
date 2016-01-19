@@ -122,7 +122,6 @@
       "IsYUV"
       "IsYUY2"
       "IsYV12"
-      "IsPlanar"
       "IsFieldBased"
       "IsFrameBased"
       "IsInterleaved"
@@ -140,10 +139,9 @@
     "filter": [
       #"source": [
         "AVISource", "OpenDMLSource", "AVIFileSource"
-        "DirectShowSource", "DirectShowSource"
+        "DirectShowSource"
         "ImageReader", "ImageSource"
-        "Imagewriter"
-        "Import"
+        "ImageWriter"
         "SegmentedAVISource", "SegmentedDirectShowSource"
         "WAVSource"
       #]
@@ -253,8 +251,6 @@
         "MessageClip"
         "ShowFiveVersions"
         "ShowFrameNumber", "ShowSMPTE", "ShowTime"
-        "ShowSMPTE"
-        "ShowTime"
         "StackHorizontal", "StackVertical"
         "Subtitle"
         "Tone"
