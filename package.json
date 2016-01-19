@@ -8,7 +8,7 @@
     "compile-builtins": "node lib/compile-builtins.js"
   },
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {},
   "devDependencies": {
