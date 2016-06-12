@@ -196,48 +196,12 @@
   'builtins':
     'patterns': [
       {
-        'name': 'support.function.boolean.avs'
-        'match': '\\b(?i:defined|exist|is(?:bool|clip|float|int|string))\\b'
+        'name': 'function.support.avs'
+        'match': '\\b(?i:a(?:bs|cos|ddborders|lignedsplice|mplify(?:db)?|nimate|pply(?:range)?|s(?:in|s(?:ert|ume(?:bff|f(?:ieldbased|ps|ramebased)|s(?:amplerate|caledfps)|tff)))|tan(?:2)?|udio(?:bits|channels|dub(?:ex)?|length(?:f)?|rate|trim)|v(?:erage(?:chroma(?:u|v)|luma)|i(?:filesource|source)))|b(?:i(?:cubicresize|linearresize|t(?:and|c(?:h(?:ange|g)|l(?:ear|r))|l(?:rotate|shift)|not|or|r(?:o(?:l|r)|rotate|shift(?:a|l|s|u))|s(?:a(?:l|r)|et|h(?:l|r))|t(?:est|st)|xor))|l(?:a(?:ck(?:manresize|ness)|nkclip)|ur)|ob)|c(?:eil|h(?:angefps|r(?:oma(?:udifference|vdifference))?)|o(?:lor(?:bars(?:hd)?|keymask|yuv)|mp(?:are|lementparity)|n(?:ditional(?:filter|reader|select)|tinued(?:denominator|numerator)|vert(?:audioto(?:16bit|24bit|32bit|8bit|float)|backtoyuy2|fps|to(?:mono|rgb(?:24|32)?|y(?:8|uy2|v(?:1(?:2|6)|24|411)))))|s(?:h)?)|rop(?:bottom)?)|d(?:e(?:f(?:ault|ined)|l(?:ayaudio|eteframe))|i(?:rectshowsource|ssolve)|oubleweave|uplicateframe)|e(?:cho|nsurevbrmp3sync|val|x(?:ist|p))|f(?:ade(?:i(?:n(?:0|2)?|o(?:0|2)?)|out(?:0|2)?)|i(?:llstr|ndstr|x(?:brokenchromaupsampling|luminance))|l(?:ip(?:horizontal|vertical)|o(?:at|or))|mod|r(?:a(?:c|me(?:count|evaluate|rate(?:denominator|numerator)?))|eezeframe))|g(?:aussresize|e(?:neralconvolution|t(?:channel|parity))|reyscale)|h(?:as(?:audio|video)|e(?:ight|x(?:value)?)|istogram|orizontalreduceby2)|i(?:m(?:age(?:reader|source(?:anim)?|writer)|port)|n(?:fo|t(?:erleave)?|vert)|s(?:audio(?:float|int)|bool|clip|f(?:ieldbased|loat|ramebased)|int(?:erleaved)?|planar|rgb(?:24|32)?|string|y(?:u(?:v|y2)|v12)))|kill(?:audio|video)|l(?:a(?:nczos(?:4resize|resize)|yer)|case|e(?:ftstr|tterbox|vels)|imiter|o(?:ad(?:_stdcall_plugin|cplugin|plugin|v(?:fapiplugin|irtualdubplugin))|g(?:10)?|op)|umadifference)|m(?:a(?:sk(?:hs)?|x)|e(?:rge(?:argb|ch(?:annels|roma)|luma|rgb)?|ssageclip)|i(?:dstr|n|xaudio)|uldiv)|no(?:p|rmalize)|o(?:pendmlsource|rd|verlay)|p(?:eculiarblend|i|o(?:intresize|w)|reroll|ulldown)|r(?:and|e(?:duceby2|s(?:ampleaudio|etmask)|v(?:erse|str))|gb(?:adjust|difference(?:fromprevious|tonext)?)|ightstr|ound)|s(?:cript(?:clip|dir|file|name)|e(?:gmented(?:avisource|directshowsource)|lect(?:eve(?:n|ry)|odd|rangeevery)?|parate(?:columns|fields|rows)|t(?:memorymax|planarlegacyalignment|workingdir))|h(?:arpen|ow(?:alpha|blue|f(?:iveversions|ramenumber)|green|red|smpte|time))|i(?:gn|n(?:cresize|h)?)|kewrows|oundout|p(?:atialsoften|line(?:16resize|36resize|64resize)?)|qrt|src|t(?:ack(?:horizontal|vertical)|r(?:cmp(?:i)?|ing|len))|u(?:bt(?:itle|ract)|pereq)|wap(?:fields|uv))|t(?:a(?:n(?:h)?|u)|cpdeliver|emporalsoften|ime(?:stretch)?|one|rim|urn(?:180|left|right)|weak)|u(?:case|difference(?:fromprevious|tonext)|n(?:alignedsplice|defined)|planem(?:ax|edian|in(?:maxdifference)?)|toy(?:8)?)|v(?:alue|difference(?:fromprevious|tonext)|er(?:sion(?:number|string)?|ticalreduceby2)|planem(?:ax|edian|in(?:maxdifference)?)|toy(?:8)?)|w(?:avsource|eave(?:columns|rows)?|idth|ritefile(?:end|if|start)?)|y(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?)|touv))\\b'
       }
       {
-        'name': 'support.function.clip.avs'
-        'match': '\\b(?i:audio(?:bits|channels|length(?:f)?|rate)|frame(?:count|rate(?:denominator|numerator)?)|getparity|h(?:as(?:audio|video)|eight)|is(?:audio(?:float|int)|f(?:ieldbased|ramebased)|interleaved|planar|rgb(?:24|32)?|y(?:u(?:v|y2)|v12))|width)\\b'
-      }
-      {
-        'name': 'support.function.control.avs'
-        'match': '\\b(?i:a(?:pply|ssert)|default|eval|import|nop|se(?:lect|t(?:memorymax|planarlegacyalignment|workingdir)))\\b'
-      }
-      {
-        'name': 'support.function.conversion.avs'
-        'match': '\\b(?i:hexvalue|string|value)\\b'
-      }
-      {
-        'name': 'support.function.filter.avs'
-        'match': '\\b(?i:a(?:ddborders|lignedsplice|mplify(?:db)?|nimate|pplyrange|ssume(?:bff|f(?:ieldbased|ps|ramebased)|s(?:amplerate|caledfps)|tff)|udiodub(?:ex)?|vi(?:filesource|source))|b(?:i(?:cubicresize|linearresize)|l(?:a(?:ck(?:manresize|ness)|nkclip)|ur)|ob)|c(?:hangefps|o(?:lor(?:bars|keymask|yuv)|mp(?:are|lementparity)|n(?:ditional(?:filter|reader)|vert(?:audioto(?:16bit|24bit|32bit|8bit|float)|backtoyuy2|fps|to(?:mono|rgb(?:24|32)?|y(?:uy2|v12)))))|rop(?:bottom)?)|d(?:el(?:ayaudio|eteframe)|i(?:rectshowsource|ssolve)|oubleweave|uplicateframe)|ensurevbrmp3sync|f(?:ade(?:i(?:n(?:0|2)?|o(?:0|2)?)|out(?:0|2)?)|ix(?:brokenchromaupsampling|luminance)|lip(?:horizontal|vertical)|r(?:ameevaluate|eezeframe))|g(?:aussresize|e(?:neralconvolution|tchannel)|reyscale)|h(?:istogram|orizontalreduceby2)|i(?:mage(?:reader|source|writer)|n(?:fo|terleave|vert))|kill(?:audio|video)|l(?:a(?:nczos(?:4resize|resize)|yer)|e(?:tterbox|vels)|imiter|oop)|m(?:ask|e(?:rge(?:argb|ch(?:annels|roma)|luma|rgb)?|ssageclip)|ixaudio)|normalize|o(?:pendmlsource|verlay)|p(?:eculiarblend|ointresize|ulldown)|r(?:e(?:duceby2|s(?:ampleaudio|etmask)|verse)|gbadjust)|s(?:criptclip|e(?:gmented(?:avisource|directshowsource)|lect(?:eve(?:n|ry)|odd|rangeevery)|paratefields)|h(?:arpen|ow(?:alpha|blue|f(?:iveversions|ramenumber)|green|red|smpte|time))|p(?:atialsoften|line(?:16resize|36resize|64resize))|src|tack(?:horizontal|vertical)|u(?:bt(?:itle|ract)|pereq)|wap(?:fields|uv))|t(?:cpdeliver|emporalsoften|imestretch|one|rim|urn(?:180|left|right)|weak)|u(?:nalignedsplice|toy)|v(?:er(?:sion|ticalreduceby2)|toy)|w(?:avsource|eave|ritefile(?:end|if|start)?)|ytouv)\\b'
-      }
-      {
-        'name': 'support.function.numeric.avs'
-        'match': '\\b(?i:abs|c(?:eil|os)|exp|f(?:lo(?:at|or)|rac)|int|log|m(?:ax|in|uldiv)|p(?:i|ow)|r(?:and|ound)|s(?:i(?:gn|n)|pline|qrt))\\b'
-      }
-      {
-        'name': 'support.function.plugin.avs'
-        'match': '\\b(?i:load(?:_stdcall_plugin|cplugin|plugin|v(?:fapiplugin|irtualdubplugin)))\\b'
-      }
-      {
-        'name': 'support.function.runtime.avs'
-        'match': '\\b(?i:average(?:chroma(?:u|v)|luma)|chroma(?:udifference|vdifference)|lumadifference|rgbdifference(?:fromprevious|tonext)?|u(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?))|v(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?))|y(?:difference(?:fromprevious|tonext)|planem(?:ax|edian|in(?:maxdifference)?)))\\b'
-      }
-      {
-        'name': 'support.function.string.avs'
-        'match': '\\b(?i:chr|findstr|l(?:case|eftstr)|midstr|r(?:evstr|ightstr)|strlen|time|ucase)\\b'
-      }
-      {
-        'name': 'support.function.version.avs'
-        'match': '\\b(?i:version(?:number|string))\\b'
-      }
-      {
-        'name': 'support.variable.control.avs'
-        'match': '\\b(?i:opt_(?:allowfloataudio|usewaveextensible))\\b'
+        'name': 'variable.support.avs'
+        'match': '\\b(?i:opt_(?:a(?:llowfloataudio|vipadscanlines)|dwchannelmask|usewaveextensible|vdubplanarhack))\\b'
       }
     ]
   'interpolated_imagesource':

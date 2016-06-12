@@ -1,5 +1,5 @@
-## 0.5.2
-* Remove duplicates from the list of built-ins. This should have no real effect, although `Import` was technically matched twice.
+## 0.6.0
+* Update builtins for AviSynth version 2.6.
 
 ## 0.5.1
 * Move the settings to its new home.

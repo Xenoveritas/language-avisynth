@@ -1,5 +1,5 @@
 # language-avisynth package
 
-AviSynth language support for Atom.
+[AviSynth](http://avisynth.nl) language support for Atom. Adds syntax highlighting for AviSynth scripts.
 
-This is currently very basic but, what the heck, it works. Ish.
+This is currently based on AviSynth 2.6.

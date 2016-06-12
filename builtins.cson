@@ -1,4 +1,13 @@
 # This is a list of the massive collection of AviSynth builtins.
+# It is based on the AviSynth 2.6 documentation.
+"meta":
+  "avisynth":
+    "version": "2.60"
+  # Indicates keys for which we should ignore the subkeys on.
+  "collapse": [
+    "function.support"
+    "variable.support"
+  ]
 "keyword":
   "control": [
     "return"
@@ -6,8 +15,8 @@
     "try"
     "catch"
   ]
-"support":
-  "function":
+"function":
+  "support":
     "numeric": [
       "Max"
       "Min"
@@ -17,9 +26,20 @@
       "Round"
       "Sin"
       "Cos"
+      "Tan"
+      "Asin"
+      "Acos"
+      "Atan"
+      "Atan2"
+      "Sinh"
+      "Cosh"
+      "Tanh"
+      "Fmod"
       "Pi"
+      "Tau"
       "Exp"
       "Log"
+      "Log10"
       "Pow"
       "Sqrt"
       "Abs"
@@ -29,6 +49,32 @@
       "Float"
       "Rand"
       "Spline"
+      "ContinuedNumerator"
+      "ContinuedDenominator"
+      "BitAnd"
+      "BitNot"
+      "BitOr"
+      "BitXor"
+      "BitLShift"
+      "BitShl"
+      "BitSal"
+      "BitRShiftL"
+      "BitRShiftU"
+      "BitShr"
+      "BitRShiftA"
+      "BitRShiftS"
+      "BitSar"
+      "BitLRotate"
+      "BitRol"
+      "BitRRotate"
+      "BitRor"
+      "BitChange"
+      "BitChg"
+      "BitClear"
+      "BitClr"
+      "BitSet"
+      "BitTest"
+      "BitTst"
     ]
     "string": [
       "LCase"
@@ -39,7 +85,11 @@
       "RightStr"
       "MidStr"
       "FindStr"
+      "FillStr"
+      "StrCmp"
+      "StrCmpi"
       "Chr"
+      "Ord"
       "Time"
     ]
     "boolean": [
@@ -54,6 +104,7 @@
     "conversion": [
       "Value"
       "HexValue"
+      "Hex"
       "String"
     ]
     "control": [
@@ -64,9 +115,15 @@
       "Default"
       "Assert"
       "NOP"
+      "UnDefined"
       "SetMemoryMax"
       "SetWorkingDir"
       "SetPlanarLegacyAlignment"
+    ]
+    "script": [
+      "ScriptName"
+      "ScriptFile"
+      "ScriptDir"
     ]
     "version": [
       "VersionNumber"
@@ -136,19 +193,23 @@
       "LoadCPlugin"
       "Load_Stdcall_Plugin"
     ]
-    "filter": [
-      #"source": [
+    "filter":
+      "source": [
         "AVISource", "OpenDMLSource", "AVIFileSource"
         "DirectShowSource"
-        "ImageReader", "ImageSource"
+        "ImageReader", "ImageSource", "ImageSourceAnim"
+        # "Import" is for some reason listed here in the doc. It's also listed
+        # as a control function, so skip it here.
         "ImageWriter"
         "SegmentedAVISource", "SegmentedDirectShowSource"
+        "SoundOut"
         "WAVSource"
-      #]
-      #"color": [
+      ]
+      "color": [
         "ColorYUV"
-        "ConvertToRGB", "ConvertToYUY2", "ConvertToYV12", "ConvertBackToYUY2",
-        "ConvertToRGB32", "ConvertToRGB24"
+        "ConvertBackToYUY2", "ConvertToRGB", "ConvertToRGB24", "ConvertToRGB32"
+        "ConvertToYUY2", "ConvertToY8", "ConvertToYV411", "ConvertToYV12",
+        "ConvertToYV16", "ConvertToYV24"
         "FixLuminance"
         "Greyscale"
         "Invert"
@@ -158,35 +219,38 @@
         "Merge", "MergeChroma", "MergeLuma"
         "RGBAdjust"
         "ShowAlpha", "ShowRed", "ShowGreen", "ShowBlue"
-        "SwapUV", "UToY", "VToY", "YToUV"
+        "SwapUV", "UToY", "UToY8", "VToY", "VToY8", "YToUV"
+        "Subtract"
         "Tweak"
-      #]
-      #"overlay": [
+      ]
+      "overlay": [
         "ColorKeyMask"
         "Layer"
         "Mask"
+        "MaskHS"
         "Overlay"
         "ResetMask"
-        "Subtract"
-      #]
-      #"geometric": [
+      ]
+      "geometric": [
         "AddBorders"
         "Crop", "CropBottom"
         "FlipHorizontal", "FlipVertical"
         "Letterbox"
+        # "Overlay" is doubled here in the docs for some reason. Not sure why.
         "ReduceBy2", "HorizontalReduceBy2", "VerticalReduceBy2"
         "BilinearResize", "BicubicResize", "BlackmanResize", "GaussResize"
-        "LanczosResize", "Lanczos4Resize", "PointResize", "Spline16Resize"
-        "Spline36Resize", "Spline64Resize"
+        "LanczosResize", "Lanczos4Resize", "PointResize", "SincResize",
+        "Spline16Resize", "Spline36Resize", "Spline64Resize"
+        "SkewRows"
         "TurnLeft", "TurnRight", "Turn180"
-      #]
-      #"pixel": [
+      ]
+      "pixel": [
         "Blur", "Sharpen"
         "GeneralConvolution"
         "SpatialSoften", "TemporalSoften"
         "FixBrokenChromaUpsampling"
-      #]
-      #"timeline": [
+      ]
+      "timeline": [
         "AlignedSplice", "UnalignedSplice"
         "AssumeFPS", "AssumeScaledFPS", "ChangeFPS", "ConvertFPS"
         "DeleteFrame"
@@ -202,8 +266,8 @@
         "SelectEvery"
         "SelectRangeEvery"
         "Trim"
-      #]
-      #"interlace": [
+      ]
+      "interlace": [
         "AssumeFrameBased", "AssumeFieldBased"
         "AssumeTFF", "AssumeBFF"
         "Bob"
@@ -211,14 +275,17 @@
         "DoubleWeave"
         "PeculiarBlend"
         "Pulldown"
+        "SeparateColumns", "SeparateRows"
         "SeparateFields"
         "SwapFields"
         "Weave"
-      #]
-      #"audio": [
+        "WeaveColumns", "WeaveRows"
+      ]
+      "audio": [
         "Amplify", "AmplifydB"
         "AssumeSampleRate"
         "AudioDub", "AudioDubEx"
+        "AudioTrim"
         "ConvertToMono"
         "ConvertAudioTo8bit", "ConvertAudioTo16bit", "ConvertAudioTo24bit"
         "ConvertAudioTo32bit", "ConvertAudioToFloat"
@@ -234,20 +301,24 @@
         "SSRC"
         "SuperEQ"
         "TimeStretch"
-      #]
-      #"meta": [
+      ]
+      "meta": [
         "Animate", "ApplyRange"
-        "ConditionalFilter", "FrameEvaluate", "ScriptClip"
-        "ConditionalReader"
         "TCPDeliver"
+      ]
+      "conditional": [
+        "ConditionalFilter", "FrameEvaluate", "ScriptClip", "ConditionalSelect"
+        "ConditionalReader"
         "WriteFile", "WriteFileIf", "WriteFileStart", "WriteFileEnd"
-      #]
-      #"debug": [
+      ]
+      "debug": [
         "BlankClip", "Blackness"
-        "ColorBars"
+        "ColorBars", "ColorBarsHD"
         "Compare"
+        "Echo"
         "Histogram"
         "Info"
+        "Preroll"
         "MessageClip"
         "ShowFiveVersions"
         "ShowFrameNumber", "ShowSMPTE", "ShowTime"
@@ -255,10 +326,13 @@
         "Subtitle"
         "Tone"
         "Version"
-      #]
-    ]
-  "variable":
+      ]
+"variable":
+  "support":
     "control": [
       "OPT_AllowFloatAudio"
       "OPT_UseWaveExtensible"
+      "OPT_VDubPlanarHack"
+      "OPT_dwChannelMask"
+      "OPT_AVIPadScanlines"
     ]
