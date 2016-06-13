@@ -5,13 +5,15 @@
   "repository": "https://github.com/Xenoveritas/language-avisynth",
   "license": "MIT",
   "scripts": {
-    "compile-builtins": "node lib/compile-builtins.js"
+    "compile-builtins": "node lib/compile-builtins.js --excludes ^keyword --collapse function.support --dest ./grammars/avisynth-builtins.cson ./builtins.cson",
+    "create-test-avs": "node lib/compile-builtins.js --test-avs ./spec/fixtures/Builtins.avs ./builtins.cson"
   },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {},
   "devDependencies": {
+    "minimist": "^1.2.0",
     "season": "~2.0"
   }
 }

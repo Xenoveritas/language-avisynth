@@ -2,12 +2,8 @@
 # It is based on the AviSynth 2.6 documentation.
 "meta":
   "avisynth":
+    # The version of AviSynth these builts cover
     "version": "2.60"
-  # Indicates keys for which we should ignore the subkeys on.
-  "collapse": [
-    "function.support"
-    "variable.support"
-  ]
 "keyword":
   "control": [
     "return"

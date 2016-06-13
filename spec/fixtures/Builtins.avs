@@ -1,3 +1,6 @@
+# This file is generated from the compile-builtins.js script.
+# It contains a list of all symbols and may be used to test the generated patterns work.
+
 # keyword.control
 
 return
@@ -5,7 +8,7 @@ global
 try
 catch
 
-# function.support
+# function.support.numeric
 
 Max()
 Min()
@@ -64,6 +67,9 @@ BitClr()
 BitSet()
 BitTest()
 BitTst()
+
+# function.support.string
+
 LCase()
 UCase()
 StrLen()
@@ -78,6 +84,9 @@ StrCmpi()
 Chr()
 Ord()
 Time()
+
+# function.support.boolean
+
 IsBool()
 IsClip()
 IsFloat()
@@ -85,10 +94,16 @@ IsInt()
 IsString()
 Exist()
 Defined()
+
+# function.support.conversion
+
 Value()
 HexValue()
 Hex()
 String()
+
+# function.support.control
+
 Apply()
 Eval()
 Import()
@@ -100,11 +115,20 @@ UnDefined()
 SetMemoryMax()
 SetWorkingDir()
 SetPlanarLegacyAlignment()
+
+# function.support.script
+
 ScriptName()
 ScriptFile()
 ScriptDir()
+
+# function.support.version
+
 VersionNumber()
 VersionString()
+
+# function.support.runtime
+
 AverageLuma()
 AverageChromaU()
 AverageChromaV()
@@ -132,6 +156,9 @@ VPlaneMedian()
 YPlaneMinMaxDifference()
 UPlaneMinMaxDifference()
 VPlaneMinMaxDifference()
+
+# function.support.clip
+
 Width()
 Height()
 FrameCount()
@@ -158,11 +185,17 @@ IsInterleaved()
 GetParity()
 HasAudio()
 HasVideo()
+
+# function.support.plugin
+
 LoadPlugin()
 LoadVirtualDubPlugin()
 LoadVFAPIPlugin()
 LoadCPlugin()
 Load_Stdcall_Plugin()
+
+# function.support.filter.source
+
 AVISource()
 OpenDMLSource()
 AVIFileSource()
@@ -175,6 +208,9 @@ SegmentedAVISource()
 SegmentedDirectShowSource()
 SoundOut()
 WAVSource()
+
+# function.support.filter.color
+
 ColorYUV()
 ConvertBackToYUY2()
 ConvertToRGB()
@@ -209,12 +245,18 @@ VToY8()
 YToUV()
 Subtract()
 Tweak()
+
+# function.support.filter.overlay
+
 ColorKeyMask()
 Layer()
 Mask()
 MaskHS()
 Overlay()
 ResetMask()
+
+# function.support.filter.geometric
+
 AddBorders()
 Crop()
 CropBottom()
@@ -239,12 +281,18 @@ SkewRows()
 TurnLeft()
 TurnRight()
 Turn180()
+
+# function.support.filter.pixel
+
 Blur()
 Sharpen()
 GeneralConvolution()
 SpatialSoften()
 TemporalSoften()
 FixBrokenChromaUpsampling()
+
+# function.support.filter.timeline
+
 AlignedSplice()
 UnalignedSplice()
 AssumeFPS()
@@ -272,6 +320,9 @@ SelectOdd()
 SelectEvery()
 SelectRangeEvery()
 Trim()
+
+# function.support.filter.interlace
+
 AssumeFrameBased()
 AssumeFieldBased()
 AssumeTFF()
@@ -288,6 +339,9 @@ SwapFields()
 Weave()
 WeaveColumns()
 WeaveRows()
+
+# function.support.filter.audio
+
 Amplify()
 AmplifydB()
 AssumeSampleRate()
@@ -312,9 +366,15 @@ ResampleAudio()
 SSRC()
 SuperEQ()
 TimeStretch()
+
+# function.support.filter.meta
+
 Animate()
 ApplyRange()
 TCPDeliver()
+
+# function.support.filter.conditional
+
 ConditionalFilter()
 FrameEvaluate()
 ScriptClip()
@@ -324,6 +384,9 @@ WriteFile()
 WriteFileIf()
 WriteFileStart()
 WriteFileEnd()
+
+# function.support.filter.debug
+
 BlankClip()
 Blackness()
 ColorBars()
@@ -344,10 +407,11 @@ Subtitle()
 Tone()
 Version()
 
-# variable.support
+# variable.support.control
 
 OPT_AllowFloatAudio
 OPT_UseWaveExtensible
 OPT_VDubPlanarHack
 OPT_dwChannelMask
 OPT_AVIPadScanlines
+
