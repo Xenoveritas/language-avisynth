@@ -1,3 +1,6 @@
+## 0.6.1
+* Add missing builtins from AviSynth version 2.6.
+
 ## 0.6.0
 * Update builtins for AviSynth version 2.6.
 
