@@ -216,6 +216,7 @@
         "ConvertToYV16", "ConvertToYV24"
         "FixLuminance"
         "Greyscale"
+        "Grayscale"
         "Invert"
         "Levels"
         "Limiter"
@@ -296,6 +297,8 @@
         "DelayAudio"
         "EnsureVBRMP3Sync"
         "GetChannel"
+        "GetChannels"
+        "GetLeftChannel", "GetRightChannel"
         "KillAudio"
         "KillVideo"
         "MergeChannels"
@@ -308,7 +311,7 @@
       ]
       "meta": [
         "Animate", "ApplyRange"
-        "TCPDeliver"
+        "TCPServer", "TCPSource"
       ]
       "conditional": [
         "ConditionalFilter", "FrameEvaluate", "ScriptClip", "ConditionalSelect"
